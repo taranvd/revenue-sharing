@@ -1,0 +1,170 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidSharePercentage",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidTotalShares",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotAuthorized",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "participant",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sharePercentage",
+						"type": "uint256"
+					}
+				],
+				"name": "addParticipant",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "distributeRevenue",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "participants",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "shares",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"details": "The contract uses custom errors for better gas efficiency.",
+			"kind": "dev",
+			"methods": {
+				"addParticipant(address,uint256)": {
+					"details": "Only the owner can add participants. The total share percentage should not exceed 100%. If a participant already exists, no changes are made.",
+					"params": {
+						"participant": "The address of the participant",
+						"sharePercentage": "The percentage of the revenue this participant will receive (between 0 and 100)"
+					}
+				},
+				"constructor": {
+					"details": "Sets the contract owner as the address deploying the contract"
+				},
+				"distributeRevenue()": {
+					"details": "The contract owner can call this function to distribute the funds. The total shares must equal 100%. The revenue is distributed proportionally based on the participants' share percentages."
+				}
+			},
+			"title": "Revenue Sharing Contract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addParticipant(address,uint256)": {
+					"notice": "Adds a participant to the revenue-sharing scheme"
+				},
+				"distributeRevenue()": {
+					"notice": "Distributes the revenue to the participants based on their share percentages"
+				}
+			},
+			"notice": "This contract allows the owner to distribute revenue among participants based on their share percentages.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/RevenueSharing.sol": "RevenueSharing"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/RevenueSharing.sol": {
+			"keccak256": "0x7e4f70ddb6787bd5e4acfc472a6d8ec16586c502391f70cd4373004a7e60748f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://39eadcedca01318733f02e0d510030a444e5e2d1dba38117021f69282ae12dc4",
+				"dweb:/ipfs/QmPmNCGQBRQEW8uEbpkXQsgE4YXm9gx1DkeqacJrg9j5DD"
+			]
+		}
+	},
+	"version": 1
+}
