@@ -1,0 +1,34 @@
+name: CI for Hardhat Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # 4. Run Hardhat tests
+      - name: Run Hardhat tests
+        run: |
+          npx hardhat test
